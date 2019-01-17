@@ -1,0 +1,54 @@
+﻿@model IEnumerable<EmployeeApplication.Models.Studio>
+
+@{
+    ViewBag.Title = "GetStudios";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "CreateStudio")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudioName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudioInformation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudioName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudioInformation)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditStudio", new { id = item.StudioId }) |
+                @Html.ActionLink("Details", "StudioDetails", new { id = item.StudioId }) |
+                @Html.ActionLink("Delete", "DeleteStudio", new { id = item.StudioId })
+            </td>
+        </tr>
+    }
+    <p>
+        @Html.ActionLink(
+    linkText: "Back to Employee List",
+    actionName: "GetEmployees",
+    controllerName: "EmployeeMvc")    
+    </p>
+</table>
+
+
+
+<p>
+    @Html.ActionLink(
+linkText: "Logout",
+actionName: "Logout",
+controllerName: "EmployeeMvc")
+    </p>

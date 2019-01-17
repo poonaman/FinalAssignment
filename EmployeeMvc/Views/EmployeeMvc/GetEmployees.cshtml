@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EmployeeApplication.Models.Employee>
+
+@{
+    ViewBag.Title = "GetEmployees";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "CreateEmployee")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeStudio)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeSalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeAge)
+            </td>
+            <td>
+                <!-- @Html.ActionLink(item.EmployeeStudio, "StudioDetailsByName", "StudioMvc", new { id = item.EmployeeStudio })  -->
+                @Html.ActionLink(
+        linkText: item.EmployeeStudio,
+        actionName: "StudioDetailsByName",
+        controllerName: "StudioMvc",
+        routeValues: new {
+            id = item.EmployeeStudio
+        },
+        htmlAttributes: null
+    )
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "EditEmployee", new { id = item.EmployeeId }) |
+                @Html.ActionLink("Details", "EmployeeDetails", new { id = item.EmployeeId }) |
+                @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.EmployeeId })
+            </td>
+        </tr>
+
+
+    }
+
+</table>
+
+@Html.ActionLink("Logout", "Logout")

@@ -1,0 +1,44 @@
+﻿@model EmployeeApplication.Models.Studio
+
+@{
+    ViewBag.Title = "StudioDetails";
+}
+
+
+
+<div>
+    <h4>Studio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudioName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudioName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudioInformation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudioInformation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink(
+   linkText: "Edit",
+   actionName: "EditStudio",
+   controllerName: "StudioMvc",
+   routeValues: new
+   {
+       id =Model.StudioId
+   },
+   htmlAttributes: null
+)|
+ @Html.ActionLink("Back to List", "GetStudios")
+</p>
